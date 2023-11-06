@@ -4,7 +4,8 @@ from streamlit_feedback import streamlit_feedback
 import trubrics
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="feedback_api_key", type="password")
+    openai_api_base = st.secrets.openai_base
+    openai_api_key = st.secrets.openai_key
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/5_Chat_with_user_feedback.py)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
@@ -36,6 +37,7 @@ if prompt := st.chat_input(placeholder="Tell me a joke about sharks"):
         st.stop()
     else:
         openai.api_key = openai_api_key
+        openai.api_base = openai_api_base
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
     st.session_state["response"] = response.choices[0].message.content
     with st.chat_message("assistant"):

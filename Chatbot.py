@@ -2,7 +2,8 @@ import openai
 import streamlit as st
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    openai_api_base = st.secrets.openai_base
+    openai_api_key = st.secrets.openai_key
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
@@ -21,6 +22,7 @@ if prompt := st.chat_input():
         st.stop()
 
     openai.api_key = openai_api_key
+    openai.api_base = openai_api_base
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)

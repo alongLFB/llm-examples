@@ -6,9 +6,9 @@ import trubrics
 with st.sidebar:
     openai_api_base = st.secrets.openai_base
     openai_api_key = st.secrets.openai_key
-    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/5_Chat_with_user_feedback.py)"
-    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+    # "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+    # "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/5_Chat_with_user_feedback.py)"
+    # "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
 st.title("📝 Chat with feedback (Trubrics)")
 
